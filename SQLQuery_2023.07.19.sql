@@ -17,24 +17,7 @@ Create table Admin
 )
 
 
-Create table Roles
-(
-roleid int identity(1,1) primary key,
-role varchar(25) unique,
-Created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,
-)
 
-INSERT INTO Roles (role)
-VALUES
-    ('MD'),
-    ('CEO'),
-    ('CTO'),
-    ('SE'),
-    ('HR'),
-    ('PM'),
-    ('TL'),
-    ('TM'),
-    ('TESTER');
 
 Select * from Roles
 Drop table Admin
