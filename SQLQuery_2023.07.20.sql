@@ -291,8 +291,66 @@ BEGIN
 
 Select * from Employees
 
+Select * from Salaries
+Select * from Emp_Salarys
+Select * from Role
 
 
+
+INSERT INTO Employees (EmpFirstName, EmpLastName, EmpEmail, Address, DOJ, Experience, Gender, MobileNumber, salaryId, roleid,Created_at)
+VALUES 
+('John', 'Doe', 'john.doe@example.com', '123 Main St, Anytown, USA', '2022-07-20', 3, 'Male', '+1 (555) 123-4567', 1, 6, CURRENT_TIMESTAMP),
+('Jane', 'Smith', 'jane.smith@example.com', '456 Oak Ave, Somewhere City, USA', '2022-10-15', 5, 'Female', '+1 (555) 987-6543', 2, 7, CURRENT_TIMESTAMP);
+
+INSERT INTO Salaries (roleid, BasicSalary, DA, HRA, ConvAll, MedicalExpenses, Special, Bonus, ExtraPay, Total)
+VALUES (4, '48000', '2000', '3000', '1000', '500', '200', '1000', '300', '56600'),
+       (5, '45000', '1800', '2800', '900', '400', '150', '900', '250', '51900'),
+       (6, '40000', '2200', '3200', '1200', '600', '250', '1200', '350', '60100'),
+       (7, '38000', '1900', '2900', '1100', '450', '180', '950', '280', '54660'),
+       (8, '36000', '2100', '3100', '1000', '550', '220', '1100', '320', '58950'),
+       (9, '34000', '2300', '3400', '1300', '700', '300', '1300', '400', '67600'),
+       (1, '53000', '2000', '3000', '1000', '500', '200', '1000', '300', '58600'),
+       (2, '57000', '2100', '3100', '1100', '600', '250', '1100', '320', '63550'),
+       (3, '50000', '2400', '3500', '1400', '800', '350', '1400', '450', '72200');
+
+
+Drop table Salaries
+INSERT INTO Employees (EmpFirstName, EmpLastName, EmpEmail, Address, DOJ, Experience, Gender, MobileNumber, salaryId, roleid,Created_at)
+VALUES
+('Navi', 'Kum', 'Navi@example.com', '221B  Baker st, London', '2010-06-01', 12, 'Male', '+1 (555) 111-2222', 1, 2,CURRENT_TIMESTAMP),
+('Michael', 'Johnson', 'michael.johnson@example.com', '789 Elm Rd, Another City, USA', '2022-06-01', 2, 'Male', '+1 (555) 111-2222', 1, 8,CURRENT_TIMESTAMP),
+('Emily', 'Williams', 'emily.williams@example.com', '321 Pine St, Townsville, USA', '2023-01-10', 8, 'Female', '+1 (555) 333-4444', 3, 5,CURRENT_TIMESTAMP),
+('William', 'Brown', 'william.brown@example.com', '987 Cedar Ave, Countryside, USA', '2022-12-05', 4, 'Male', '+1 (555) 555-1234', 2, 4,CURRENT_TIMESTAMP),
+('Sophia', 'Davis', 'sophia.davis@example.com', '555 Elm St, Metropolis, USA', '2023-02-20', 6, 'Female', '+1 (555) 444-7777', 1, 5,CURRENT_TIMESTAMP),
+('James', 'Miller', 'james.miller@example.com', '777 Oak St, Riverside, USA', '2022-09-12', 7, 'Male', '+1 (555) 666-9999', 1, 2,CURRENT_TIMESTAMP),
+('Olivia', 'Garcia', 'olivia.garcia@example.com', '444 Pine Ave, Cityville, USA', '2022-04-30', 9, 'Female', '+1 (555) 111-3333', 2, 3,CURRENT_TIMESTAMP),
+('Robert', 'Martinez', 'robert.martinez@example.com', '222 Elm St, Suburbia, USA', '2023-03-25', 3, 'Male', '+1 (555) 888-1111', 1, 4,CURRENT_TIMESTAMP),
+('Emma', 'Lee', 'emma.lee@example.com', '777 Oak Ave, Hometown, USA', '2022-11-28', 5, 'Female', '+1 (555) 999-5555', 3, 2,CURRENT_TIMESTAMP),
+('David', 'Jones', 'david.jones@example.com', '555 Pine St, City Central, USA', '2022-08-17', 2, 'Male', '+1 (555) 222-4444', 2, 8,CURRENT_TIMESTAMP),
+('Ava', 'Williams', 'ava.williams@example.com', '123 Cedar Ave, Uptown, USA', '2023-04-02', 7, 'Female', '+1 (555) 777-2222', 3, 3,CURRENT_TIMESTAMP),
+('Michael', 'Smith', 'michael.smith@example.com', '321 Oak St, Downtown, USA', '2023-05-19', 1, 'Male', '+1 (555) 444-5555', 1, 7,CURRENT_TIMESTAMP),
+('Sophia', 'Davis', 'sophia.davis@example.com', '777 Pine St, Midtown, USA', '2022-11-10', 5, 'Female', '+1 (555) 111-7777', 2, 8,CURRENT_TIMESTAMP),
+('Oliver', 'Johnson', 'oliver.johnson@example.com', '456 Elm Ave, Suburbia, USA', '2022-08-05', 3, 'Male', '+1 (555) 222-8888', 3, 6,CURRENT_TIMESTAMP),
+('Charlotte', 'Brown', 'charlotte.brown@example.com', '789 Oak Ave, City Central, USA', '2023-02-15', 6, 'Female', '+1 (555) 555-2222', 2, 5,CURRENT_TIMESTAMP),
+('James', 'Williams', 'james.williams@example.com', '321 Main St, Uptown, USA', '2022-12-20', 2, 'Male', '+1 (555) 333-9999', 1, 3,CURRENT_TIMESTAMP),
+('Emma', 'Garcia', 'emma.garcia@example.com', '555 Elm Ave, Metropolis, USA', '2022-09-27', 7, 'Female', '+1 (555) 888-7777', 3, 4,CURRENT_TIMESTAMP),
+('William', 'Smith', 'william.smith@example.com', '123 Oak St, Hometown, USA', '2023-04-05', 4, 'Male', '+1 (555) 222-4444', 2, 6,CURRENT_TIMESTAMP),
+('Olivia', 'Johnson', 'olivia.johnson@example.com', '456 Main St, Anytown, USA', '2023-06-12', 8, 'Female', '+1 (555) 777-8888', 3, 2,CURRENT_TIMESTAMP),
+('Liam', 'Miller', 'liam.miller@example.com', '789 Pine Ave, Townsville, USA', '2022-11-30', 5, 'Male', '+1 (555) 444-7777', 1, 7,CURRENT_TIMESTAMP),
+('Sophia', 'Martinez', 'sophia.martinez@example.com', '555 Elm St, Another City, USA', '2022-08-25', 1, 'Female', '+1 (555) 888-9999', 2, 5,CURRENT_TIMESTAMP),
+('Noah', 'Smith', 'noah.smith@example.com', '777 Main St, Metropolis, USA', '2023-03-15', 9, 'Male', '+1 (555) 333-1111', 1, 3,CURRENT_TIMESTAMP),
+('Olivia', 'Garcia', 'olivia.garcia@example.com', '444 Oak Ave, Cityville, USA', '2022-10-02', 6, 'Female', '+1 (555) 111-7777', 2, 8,CURRENT_TIMESTAMP),
+('Emma', 'Johnson', 'emma.johnson@example.com', '222 Elm Ave, Somewhere City, USA', '2023-05-28', 2, 'Female', '+1 (555) 777-5555', 3, 2,CURRENT_TIMESTAMP),
+('Oliver', 'Brown', 'oliver.brown@example.com', '555 Pine St, Anytown, USA', '2022-12-15', 4, 'Male', '+1 (555) 111-3333', 1, 6,CURRENT_TIMESTAMP),
+('Isabella', 'Davis', 'isabella.davis@example.com', '777 Main St, Countryside, USA', '2023-01-20', 3, 'Female', '+1 (555) 444-6666', 2, 4,CURRENT_TIMESTAMP),
+('Liam', 'Martinez', 'liam.martinez@example.com', '123 Elm Ave, Hometown, USA', '2022-08-07', 5, 'Male', '+1 (555) 888-5555', 1, 3,CURRENT_TIMESTAMP),
+('Olivia', 'Smith', 'olivia.smith@example.com', '321 Oak St, Suburbia, USA', '2023-06-02', 2, 'Female', '+1 (555) 222-8888', 2, 6,CURRENT_TIMESTAMP),
+('Noah', 'Davis', 'noah.davis@example.com', '789 Pine Ave, Somewhere City, USA', '2022-10-18', 7, 'Male', '+1 (555) 777-9999', 3, 7,CURRENT_TIMESTAMP),
+('Charlotte', 'Brown', 'charlotte.brown@example.com', '555 Elm St, Townsville, USA', '2022-07-25', 1, 'Female', '+1 (555) 111-4444', 1, 4,CURRENT_TIMESTAMP),
+('James', 'Williams', 'james.williams@example.com', '777 Main St, Anytown, USA', '2023-04-12', 6, 'Male', '+1 (555) 666-7777', 3, 8,CURRENT_TIMESTAMP),
+('Isabella', 'Garcia', 'isabella.garcia@example.com', '444 Oak Ave, City Central, USA', '2023-01-30', 3, 'Female', '+1 (555) 222-3333', 1, 5,CURRENT_TIMESTAMP),
+('William', 'Johnson', 'william.johnson@example.com', '321 Pine St, Hometown, USA', '2022-09-02', 8, 'Male', '+1 (555) 888-7777', 2, 6,CURRENT_TIMESTAMP),
+('Oliver', 'Smith', 'oliver.smith@example.com', '123 Elm Ave, Another City, USA', '2022-12-28', 5, 'Male', '+1 (555) 777-3333', 1, 3,CURRENT_TIMESTAMP)
 
 
 

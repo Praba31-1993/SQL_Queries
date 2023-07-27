@@ -82,7 +82,7 @@ SELECT dbo.FN_Dates('2025-05-10 18:20:30') AS Date;
 
 SELECT DATEADD(DAY, -3, '2017/08/25') AS DateAdd; --2017-08-22 00:00:00.000--
 SELECT DATEADD(Month, -2, '2017/08/25') AS DateAdd; --2017-06-25 00:00:00.000--
-SELECT DATEADD(day, 1, '2017/08/25') AS DateAdd;--2018-08-25 00:00:00.000--
+SELECT DATEADD(year, 1, '2017/08/25') AS DateAdd;--2018-08-25 00:00:00.000--
 
 /*DateDiff*/
 SELECT DATEDIFF( month, '2021/10/27', '2023/07/25') AS DateDiff;
@@ -91,8 +91,8 @@ SELECT DATEDIFF( month, '2021/10/27', '2023/07/25') AS DateDiff;
 SELECT DATEFROMPARTS(2018, 12, 25) AS DateFromParts;
 
 /*Conditional Function */
-Select IIF(10001>1000, 'yes', 'no')--yes-- 
-Select COALESCE(NULL, NULL,'Praba', NULL) -- Praba -- 
+Select IIF(101>1000, 'yes', 'no')--yes-- 
+Select COALESCE(NULL, NULL,'Praba', 'karthik',NULL) -- Praba -- 
 
 
 /*String Function */ 
@@ -122,3 +122,92 @@ Select [EmpFirstName], [EmpLastName], [EmpEmail], [Experience], [Gender],[Create
 from employee
 
 Select DATEDiff(YEAR, '2023-07-25','1993-08-25')
+
+
+/*Pivot Table */ 
+CREATE TABLE pivot_demo    
+(    
+   Region varchar(45),    
+   Year int,    
+   Sales int    
+)   
+
+INSERT INTO pivot_demo  
+VALUES ('North', 2010, 72500),  
+('South', 2010, 60500),  
+('South', 2010, 52000),  
+('North', 2011, 45000),  
+('South', 2011, 82500),    
+('North', 2011, 35600),  
+('South', 2012, 32500),   
+('North', 2010, 20500);  
+
+Select * from pivot_demo
+
+SELECT Year, North, South FROM     
+(SELECT Region, Year, Sales FROM pivot_demo ) AS Tab1    
+PIVOT    
+(SUM(Sales) FOR Region IN (North, South)) AS Tab2    
+ORDER BY Tab2.Year		
+
+create table StudentMark(
+StudentID int primary key identity(1,1),
+StudentName varchar(100),
+Subject varchar(100) Not Null,
+Marks int
+)
+
+
+
+INSERT INTO StudentMark (StudentName, Subject, Marks)
+VALUES
+    ('John Smith', 'Mathematics', 90),
+    ('Jane Doe', 'Science', 85),
+    ('Michael Johnson', 'History', 78);
+
+Select * from StudentMark
+
+Select * From
+(Select StudentName, Subject, Marks from StudentMark) As Tab1
+PIVOT
+(SUM(Marks) for Subject In ([Mathematics], [Science], [History])) as Tab2
+
+
+DECLARE @input NVARCHAR(100) = 'PrabaTwilight';
+DECLARE @substring NVARCHAR(100) = 'NOt';
+
+IF CHARINDEX(@substring, @input) > 0
+    SELECT 'Twilight is available in the input.' AS Result;
+ELSE
+    SELECT 'Twilight is NOT available in the input.' AS Result;
+
+/* String ('PrabaIDYTwilightITSolution')  */
+
+/*I need output as 'Praba is Working in TwilightITSolution'*/ 
+
+
+Alter FUNCTION FN_String(@string varchar(100))
+RETURNS varchar(100)
+AS   
+BEGIN  
+    RETURN REPLACE(@string,'Solution','Praba is Working in ')
+END;   
+
+SELECT dbo.FN_String('PrabaIDYTwilightITSolution') AS Name;
+
+/*Replace even no= 2 */
+Select * from employee
+
+Alter table employee Add EmpName varchar(100);
+update employee set EmpName = CONCAT(First_Name,' ', Last_Name) Where EmployeeID>0
+
+Select Upper(EmpName) from Employee
+
+create Function FN_AddNamespace()
+return varchar(50)
+AS
+BEGIN
+update employee set EmpName = CONCAT(First_Name,' ', Last_Name) Where EmployeeID>0
+END
+
+/*List View, Sort View, Filter View, Pagination Per Page 10 data  */
