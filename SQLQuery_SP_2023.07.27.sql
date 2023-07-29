@@ -27,6 +27,7 @@ join Salary S on E.Eid=@Eid and E.FirstName=@Name and E.roleid=S.roleid
 join Role R on E.Eid=@Eid and E.roleid=R.roleid
 END
 
+
 /*Task3 Sort the Employees*/
 create Proc SP_SortEmployeeSalary(@sortValue int)
 AS
@@ -64,10 +65,40 @@ BEGIN
 END
 
 
+/*SP for Filter, Sort, Pagination*/
+CREATE PROC SP_EmployeeSalaryDetails (
+    @Eid INT,
+    @Name VARCHAR(50),
+    @sortValue INT,
+    @Page INT,
+    @PageSize INT
+)
+AS
+BEGIN
+    DECLARE @PageNo INT = (@Page - 1) * @PageSize;
 
-
-
-
-
-
-
+    SELECT E.Eid,
+           E.FirstName,
+           E.LastName,
+           E.Email,
+           E.DOJ,
+           R.role,
+           S.Month,
+           S.BasicSalary,
+           S.Gross_Salary AS CTC,
+           E.Created_at AS Created,
+           E.Modified_date AS Modified
+    FROM Employee E
+    LEFT JOIN Role R ON E.roleid = R.roleid
+    LEFT JOIN Salary S ON E.roleid = S.roleid
+    WHERE (@Eid IS NULL OR E.Eid = @Eid)
+      AND (@Name IS NULL OR E.FirstName = @Name)
+    ORDER BY
+        CASE
+            WHEN @sortValue = 1 THEN E.Eid
+        END ASC,
+        CASE
+            WHEN @sortValue = -1 THEN E.Eid
+        END DESC
+    OFFSET 1 ROWS FETCH NEXT 10 ROWS ONLY;
+END
